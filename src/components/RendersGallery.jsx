@@ -1,30 +1,26 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Grid } from "swiper";
 import ArrowDown from "./ArrowDown.jsx";
 
 export default function RendersGallery({ renders = [], onImageClick = () => {} }) {
+  const columns = Math.ceil(renders.length / 2); // siempre 2 filas
+
   return (
-    <section id="mis-renders-fotorealistas-y-post-producción" className="min-h-screen px-6 md:px-10 lg:px-20 py-20 bg-[#f5f1e8]">
+    <section
+      id="mis-renders-fotorealistas-y-post-producción"
+      className="px-6 md:px-10 lg:px-20 py-20 bg-[#f5f1e8] min-h-screen flex flex-col"
+    >
       <h2 className="text-3xl font-light mb-12 text-center">Galería de Renders</h2>
 
-      <Swiper
-        modules={[Navigation, Grid]}
-        spaceBetween={16}
-        slidesPerView={2}            // Mobile: 2 slides visibles
-        grid={{ rows: 2, fill: "row" }}
-        navigation
-        breakpoints={{
-          640: { slidesPerView: 2, grid: { rows: 2, fill: "row" } },
-          768: { slidesPerView: 3, grid: { rows: 2, fill: "row" } },
-          1024: { slidesPerView: 4, grid: { rows: 2, fill: "row" } },
-        }}
-        className="py-4"
-      >
+      {/* Mobile: scroll horizontal con 2 filas */}
+      <div className="flex md:hidden gap-4 overflow-x-auto pb-4">
         {renders.map((img, idx) => (
-          <SwiperSlide key={idx}>
+          <div
+            key={idx}
+            className="flex-shrink-0"
+            style={{ width: "16rem", height: `calc((100vh - 10rem) / 2)` }} // altura dinámica
+          >
             <button
               onClick={() => onImageClick(img)}
-              className="w-full aspect-[4/3] overflow-hidden rounded-lg shadow-md hover:scale-105 transition duration-300"
+              className="w-full h-full overflow-hidden rounded-lg shadow-md hover:scale-105 transition duration-300"
             >
               <img
                 src={img}
@@ -32,9 +28,33 @@ export default function RendersGallery({ renders = [], onImageClick = () => {} }
                 className="w-full h-full object-cover"
               />
             </button>
-          </SwiperSlide>
+          </div>
         ))}
-      </Swiper>
+      </div>
+
+      {/* Desktop: 2 filas, altura ajustada a pantalla */}
+      <div
+        className="hidden md:grid gap-6 flex-1"
+        style={{
+          gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+          gridAutoRows: `calc((100vh - 20rem) / 2)`,
+        }}
+      >
+        {renders.map((img, idx) => (
+          <div key={idx} className="w-full h-full">
+            <button
+              onClick={() => onImageClick(img)}
+              className="w-full h-full overflow-hidden rounded-lg shadow-md hover:scale-105 transition duration-300"
+            >
+              <img
+                src={img}
+                alt={`Render ${idx + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </button>
+          </div>
+        ))}
+      </div>
 
       <div className="flex justify-center mt-6">
         <ArrowDown href="#diagramación-y-representación-visual-de-proyectos" dark={false} />
