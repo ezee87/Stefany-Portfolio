@@ -17,6 +17,7 @@ export default function ProjectModal({ project, onClose }) {
     }
   };
 
+  // Forzar que el thumbnail activo esté sincronizado desde el inicio
   useEffect(() => {
     setActiveIndex(0);
     goToSlide(0);
@@ -34,50 +35,38 @@ export default function ProjectModal({ project, onClose }) {
         {/* Botón cerrar */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-white text-3xl font-bold z-10"
+          className="absolute top-2 right-2 text-white text-3xl font-bold z-20"
           aria-label="Cerrar"
         >
           ×
         </button>
 
-       {/* Contenedor de imagen principal */}
-<div className="w-full flex-1 flex items-center justify-center">
-  <Swiper
-    ref={swiperRef}
-    modules={[Navigation]}
-    navigation
-    onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-    className="w-full h-full"
-  >
-    {project.images.map((img, i) => (
-      <SwiperSlide key={i} className="flex items-center justify-center">
-        <div className="relative w-full flex items-center justify-center">
-          <TransformWrapper
-            initialScale={1}
-            wheel={{ step: 0.2 }}
-            doubleClick={{ step: 1.5 }}
-            pinch={{ step: 1.2 }}
+        {/* Contenedor de imagen principal */}
+        <div className="w-full flex-1 flex items-center justify-center">
+          <Swiper
+            ref={swiperRef}
+            modules={[Navigation]}
+            navigation  // Flechas automáticas de Swiper
+            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+            className="w-full h-full"
           >
-            <TransformComponent>
-              <img
-                src={img}
-                alt={`${project.title} ${i + 1}`}
-                className="object-contain"
-                style={{
-                  maxWidth: "80%",
-                  maxHeight: "70vh",
-                }}
-              />
-            </TransformComponent>
-          </TransformWrapper>
+            {project.images.map((img, i) => (
+              <SwiperSlide key={i} className="flex items-center justify-center">
+                <TransformWrapper>
+                  <TransformComponent>
+                    <img
+                      src={img}
+                      alt={`${project.title} ${i + 1}`}
+                      className="max-w-[80%] max-h-[70vh] object-contain mx-auto"
+                    />
+                  </TransformComponent>
+                </TransformWrapper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
-      </SwiperSlide>
-    ))}
-  </Swiper>
-</div>
 
-        {/* Thumbnails fijos debajo, centrados */}
-        {/* Thumbnails fijos debajo, centrados en una sola fila con scroll suave */}
+        {/* Thumbnails fijos debajo, centrados y scroll horizontal en mobile */}
         {project.images.length > 1 && (
           <div className="w-full overflow-x-auto mt-4 scrollbar-hide">
             <div className="flex gap-2 justify-center">
@@ -86,15 +75,15 @@ export default function ProjectModal({ project, onClose }) {
                   <img
                     src={img}
                     alt={`Thumb ${i + 1}`}
-                    className={`h-16 w-24 object-cover rounded-lg border-2 transition ${i === activeIndex ? "border-white" : "border-transparent"
-                      }`}
+                    className={`h-16 w-24 object-cover rounded-lg border-2 transition ${
+                      i === activeIndex ? "border-white" : "border-transparent"
+                    }`}
                   />
                 </button>
               ))}
             </div>
           </div>
         )}
-
       </div>
     </div>
   );
