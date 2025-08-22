@@ -8,16 +8,22 @@ export default function ImageModal({ src, onClose }) {
       role="dialog"
       aria-modal="true"
     >
-      <div onClick={(e) => e.stopPropagation()} className="relative rounded-lg">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative rounded-lg"
+      >
         {/* Botón de cierre */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-white text-3xl font-bold focus:outline-none transition-opacity duration-200 opacity-80 hover:opacity-100 hover:bg-black/30 rounded-full p-1"
+          className="absolute top-2 right-2 z-50 text-white text-3xl font-bold 
+                     focus:outline-none transition-opacity duration-200 
+                     opacity-80 hover:opacity-100 hover:bg-black/30 rounded-full p-1"
           aria-label="Cerrar"
         >
           ×
         </button>
 
+        {/* Contenedor con zoom */}
         <TransformWrapper
           initialScale={1}
           wheel={{ step: 0.2 }}
@@ -28,7 +34,7 @@ export default function ImageModal({ src, onClose }) {
             <img
               src={src}
               alt="Ampliada"
-              className="max-w-3xl max-h-[80vh] rounded-lg shadow-2xl"
+              className="max-w-3xl max-h-[80vh] rounded-lg shadow-2xl relative z-10"
             />
           </TransformComponent>
         </TransformWrapper>
