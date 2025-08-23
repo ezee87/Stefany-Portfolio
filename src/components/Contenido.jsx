@@ -1,6 +1,10 @@
-export default function Contenido({ items = [] }) {
+export default function Contenido({ items = [], colors }) {
   return (
-    <section id="contenido" className="relative min-h-screen flex items-center px-6 md:px-10">
+    <section
+      id="contenido"
+      className="relative min-h-screen flex items-center px-6 md:px-10"
+      style={{ backgroundColor: colors.fondoB, color: colors.text }}
+    >
       <div className="absolute inset-y-0 right-0 w-1/2">
         <img src="/images/contenido-bg.png" alt="Decoración" className="w-full h-full object-cover" />
       </div>
@@ -12,7 +16,11 @@ export default function Contenido({ items = [] }) {
           <a
             key={index}
             href={`#${item.replace(/\s+/g, "-").toLowerCase()}`}
-            className="px-5 py-3 bg-[#e2dbcf]/90 hover:bg-[#e2dbcf] rounded-lg shadow-sm transition text-sm font-medium w-[400px] text-right"
+            className="px-5 py-3 shadow-sm transition text-sm font-medium w-[400px] text-right rounded-none"
+            style={{
+              backgroundColor: colors.buttonBg,
+              color: colors.buttonText,
+            }}
           >
             {index + 1}. {item}
           </a>

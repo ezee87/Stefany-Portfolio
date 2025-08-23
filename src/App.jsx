@@ -3,6 +3,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/grid";
 
+import { ThemeProvider, useTheme } from "./ThemeContext.jsx";
+
 import Home from "./components/Home.jsx";
 import Contenido from "./components/Contenido.jsx";
 import SobreMi from "./components/SobreMi.jsx";
@@ -14,6 +16,8 @@ import ProjectModal from "./components/ProjectModal.jsx";
 import Contacto from "./components/Contacto.jsx";
 import Footer from "./components/Footer.jsx";
 import UpToContenido from "./components/UpToContenido.jsx";
+import { Lightbulb, LampDesk } from "lucide-react";
+
 
 // 🔥 Importa automáticamente todos los renders
 const rendersModules = import.meta.glob("./assets/renders/*.{jpg,jpeg,png,webp}", {
@@ -31,7 +35,10 @@ const diagramasModules = import.meta.glob("./assets/diagramas/*.{jpg,jpeg,png,we
 });
 const diagramas = Object.values(diagramasModules).map((src) => ({ src }));
 
-export default function App() {
+function AppContent() {
+
+  const { theme, colors, toggleTheme } = useTheme();
+
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
   const [showUpToContenido, setShowUpToContenido] = useState(false);
@@ -60,7 +67,7 @@ export default function App() {
     {
       id: 3,
       title: "SPA SS: Remodelación y diseño interior, en Ciudad de Tarija.",
-      images: ["/images/proyecto3-1.jpg", "/images/proyecto3-2.jpg","/images/proyecto3-3.jpg", "/images/proyecto3-4.jpg"],
+      images: ["/images/proyecto3-1.jpg", "/images/proyecto3-2.jpg", "/images/proyecto3-3.jpg", "/images/proyecto3-4.jpg"],
       description: "Descripción detallada del Proyecto 3.",
     },
     {
@@ -84,33 +91,49 @@ export default function App() {
   }, []);
 
   return (
-    <div className="font-sans bg-[#f5f1e8] text-gray-900 scroll-smooth relative">
+    <div style={{ backgroundColor: colors.background, color: colors.text }} className="font-sans scroll-smooth relative">
+ <button
+  onClick={toggleTheme}
+  className="fixed top-4 right-4 z-50 p-3 rounded-full shadow-md transition"
+  style={{ backgroundColor: colors.buttonBg, color: colors.buttonText, borderColor: colors.border }}
+>
+  {theme === "dark" ? (
+    <Lightbulb className="h-6 w-6" />
+  ) : (
+    <LampDesk className="h-6 w-6" />
+  )}
+</button>
+
+
       <UpToContenido visible={showUpToContenido} />
 
       <Home />
 
-      <Contenido items={menuItems} />
+      <Contenido items={menuItems} colors={colors} />
 
-      <SobreMi />
+      <SobreMi colors={colors} />
 
-      <Proyectos proyectos={proyectos} onOpenProject={(p) => setSelectedProject(p)} />
+      <Proyectos proyectos={proyectos} onOpenProject={(p) => setSelectedProject(p)} colors={colors} />
 
-      {/* Galería de renders */}
-      <RendersGallery
-        renders={renders}
-        onImageClick={(img) => setSelectedImage(img)}
-        mobileRows={2} // fuerza siempre 2 filas en mobile
-      />
+      <RendersGallery renders={renders} onImageClick={(img) => setSelectedImage(img)} colors={colors} mobileRows={2} />
 
-      {/* Galería de diagramas */}
-      <DiagramasGallery diagramas={diagramas} onImageClick={(img) => setSelectedImage(img)} />
+      <DiagramasGallery diagramas={diagramas} onImageClick={(img) => setSelectedImage(img)} colors={colors} />
 
       {selectedImage && <ImageModal src={selectedImage} onClose={() => setSelectedImage(null)} />}
 
       {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
 
-      <Contacto />
-      <Footer />
+      <Contacto colors={colors} />
+
+      <Footer colors={colors} />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }

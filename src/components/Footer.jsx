@@ -1,3 +1,4 @@
+// Footer.jsx
 export default function Footer() {
   return (
     <footer className="bg-[#1a1a1a] text-white py-6 text-center text-sm">

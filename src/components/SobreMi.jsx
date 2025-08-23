@@ -1,26 +1,39 @@
 import ArrowDown from "./ArrowDown.jsx";
 
-export default function SobreMi() {
+export default function SobreMi({ colors }) {
   return (
     <section
       id="sobre-mí"
-      className="min-h-screen px-6 md:px-20 py-20 bg-[#efe6dc] flex flex-col items-center"
+      className="min-h-screen px-6 md:px-20 py-20 flex flex-col items-center"
+      style={{ backgroundColor: colors.fondoSM, color: colors.text }}
     >
       <h2 className="text-3xl font-light mb-12 text-center">Sobre mí</h2>
 
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Columna izquierda */}
-        <div className="md:col-span-1 bg-[#f5f1e8] rounded-2xl p-6 border border-[#ece9e2] flex flex-col items-center">
-          <img
-            src="/images/sobre-mi.jpg"
-            alt="Stefany"
-            className="w-full h-72 object-cover rounded-xl"
-          />
+        <div
+          className="md:col-span-1 p-6 border flex flex-col items-center rounded-none"
+          style={{
+            backgroundColor: colors.contenedorSM,
+            borderColor: colors.border,
+          }}
+        >
+          <div className="w-60 md:w-60 aspect-[756/904]">
+            <img
+              src="/images/sobre-mi.jpg"
+              alt="Stefany"
+              className="w-full h-full object-cover rounded-lg shadow-lg"
+            />
+          </div>
 
-   
-  
           {/* Enfoques */}
-          <div className="rounded-2xl border border-[#ece9e2] bg-[#faf9f7] p-4 mt-6 shadow-sm w-full">
+          <div
+            className="p-4 mt-6 w-full border rounded-none"
+            style={{
+              backgroundColor: colors.seccionesSM,
+              borderColor: colors.border,
+            }}
+          >
             <h3 className="font-semibold mb-2 text-sm">Enfoques</h3>
             <ul className="list-disc list-inside text-sm space-y-1">
               <li>Bienestar humano y confort</li>
@@ -31,7 +44,13 @@ export default function SobreMi() {
           </div>
 
           {/* Idiomas */}
-          <div className="rounded-2xl border border-[#ece9e2] bg-[#faf9f7] p-4 mt-6 shadow-sm w-full">
+          <div
+            className="p-4 mt-6 w-full border rounded-none"
+            style={{
+              backgroundColor: colors.seccionesSM,
+              borderColor: colors.border,
+            }}
+          >
             <h3 className="font-semibold mb-2 text-sm">Idiomas</h3>
             <ul className="list-disc list-inside text-sm space-y-1">
               <li>Español (Nativo)</li>
@@ -40,7 +59,13 @@ export default function SobreMi() {
           </div>
 
           {/* Aptitudes */}
-          <div className="rounded-2xl border border-[#ece9e2] bg-[#faf9f7] p-4 mt-4 shadow-sm w-full">
+          <div
+            className="p-4 mt-4 w-full border rounded-none"
+            style={{
+              backgroundColor: colors.seccionesSM,
+              borderColor: colors.border,
+            }}
+          >
             <h3 className="font-semibold mb-2 text-sm">Aptitudes</h3>
             <ul className="list-disc list-inside text-sm space-y-1">
               <li>Comunicación efectiva</li>
@@ -55,12 +80,17 @@ export default function SobreMi() {
           </div>
         </div>
 
-        {/* Columna derecha (textos principales) */}
+        {/* Columna derecha */}
         <div className="md:col-span-2 space-y-6">
-          {/* Perfil */}
-          <div className="rounded-2xl border border-[#ece9e2] bg-[#faf9f7] p-6 shadow-sm">
+          <div
+            className="p-6 border rounded-none"
+            style={{
+              backgroundColor: colors.seccionesSM,
+              borderColor: colors.border,
+            }}
+          >
             <h3 className="font-semibold mb-2">Perfil</h3>
-            <p className="text-sm text-gray-700 leading-relaxed">
+            <p className="text-sm leading-relaxed">
               Arquitecta con experiencia en diseño y desarrollo integral de
               proyectos, con énfasis en la optimización espacial, eficiencia
               funcional y sostenibilidad ambiental. La práctica profesional en
@@ -75,12 +105,19 @@ export default function SobreMi() {
             </p>
           </div>
 
-          {/* Formación + Cursos */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-2xl border border-[#ece9e2] bg-[#faf9f7] p-6 shadow-sm">
+            <div
+              className="p-6 border rounded-none"
+              style={{
+                backgroundColor: colors.seccionesSM,
+                borderColor: colors.border,
+              }}
+            >
               <h3 className="font-semibold mb-3">Formación en Arquitectura</h3>
               <ul className="list-disc list-inside text-sm space-y-1">
-                <li>Universidad Católica Boliviana "San Pablo”, Tarija</li>
+                <li>
+                  Universidad Católica Boliviana "San Pablo”, Tarija
+                </li>
                 <li>Universidad Autónoma Juan Misael Saracho</li>
                 <li>Facultad de Arquitectura y Diseño Gráfico</li>
                 <li>Diseño arquitectónico</li>
@@ -91,7 +128,13 @@ export default function SobreMi() {
                 <li>Representación gráfica y modelado 3D</li>
               </ul>
             </div>
-            <div className="rounded-2xl border border-[#ece9e2] bg-[#faf9f7] p-6 shadow-sm">
+            <div
+              className="p-6 border rounded-none"
+              style={{
+                backgroundColor: colors.seccionesSM,
+                borderColor: colors.border,
+              }}
+            >
               <h3 className="font-semibold mb-3">Cursos</h3>
               <ul className="list-disc list-inside text-sm space-y-1">
                 <li>Renderización Avanzada con SketchUp y V-Ray</li>
@@ -103,9 +146,14 @@ export default function SobreMi() {
             </div>
           </div>
 
-          {/* Competencias + Experiencia + Logros */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="rounded-2xl border border-[#ece9e2] bg-[#faf9f7] p-6 shadow-sm">
+            <div
+              className="p-6 border rounded-none"
+              style={{
+                backgroundColor: colors.seccionesSM,
+                borderColor: colors.border,
+              }}
+            >
               <h3 className="font-semibold mb-3">Competencias</h3>
               <ul className="list-disc list-inside text-sm space-y-1">
                 <li>AutoCAD avanzado</li>
@@ -119,14 +167,31 @@ export default function SobreMi() {
                 <li>Diseño de interiores</li>
               </ul>
             </div>
-            <div className="rounded-2xl border border-[#ece9e2] bg-[#faf9f7] p-6 shadow-sm">
+            <div
+              className="p-6 border rounded-none"
+              style={{
+                backgroundColor: colors.seccionesSM,
+                borderColor: colors.border,
+              }}
+            >
               <h3 className="font-semibold mb-3">Experiencia</h3>
               <ul className="list-disc list-inside text-sm space-y-1">
-                <li>Estudio de Arquitectura Mariana Franco (Arq. Mariana Franco, Tarija). </li>
-                <li>Empresa constructora Virsur (Ing. Javier Viracocha, Tarija).</li>
+                <li>
+                  Estudio de Arquitectura Mariana Franco (Arq. Mariana Franco,
+                  Tarija).
+                </li>
+                <li>
+                  Empresa constructora Virsur (Ing. Javier Viracocha, Tarija).
+                </li>
               </ul>
             </div>
-            <div className="rounded-2xl border border-[#ece9e2] bg-[#faf9f7] p-6 shadow-sm">
+            <div
+              className="p-6 border rounded-none"
+              style={{
+                backgroundColor: colors.seccionesSM,
+                borderColor: colors.border,
+              }}
+            >
               <h3 className="font-semibold mb-3">Logros</h3>
               <ul className="list-disc list-inside text-sm space-y-1">
                 <li>
@@ -142,7 +207,7 @@ export default function SobreMi() {
         </div>
       </div>
 
-      <ArrowDown href="#mis-proyectos" dark={false} />
+      <ArrowDown href="#mis-proyectos" />
     </section>
   );
 }

@@ -15,7 +15,7 @@ export default function Home() {
         </h1>
       </div>
       <div className="mx-auto mb-8">
-        <ArrowDown href="#contenido" dark={false} />
+        <ArrowDown href="#contenido" forceColor="light"/>
       </div>
     </section>
   );
