@@ -50,9 +50,7 @@ function AppContent() {
     "Contacto",
   ];
 
-  const proyectos = [
-    // ... tu array de proyectos
-  ];
+  const proyectos = [{ id: 1, title: "CD Clinica Dental, en Ciudad de Tarija.", images: ["/images/proyecto1-1.jpg", "/images/proyecto1-2.jpg", "/images/proyecto1-3.jpg", "/images/proyecto1-4.jpg"], description: "Descripción detallada del Proyecto 1.", }, { id: 2, title: "DP Departamento en Santa Cruz de la Sierra.", images: ["/images/proyecto2-1.jpg", "/images/proyecto2-2.jpg", "/images/proyecto2-3.jpg", "/images/proyecto2-4.jpg"], description: "Descripción detallada del Proyecto 2.", }, { id: 3, title: "SPA SS: Remodelación y diseño interior, en Ciudad de Tarija.", images: ["/images/proyecto3-1.jpg", "/images/proyecto3-2.jpg", "/images/proyecto3-3.jpg", "/images/proyecto3-4.jpg"], description: "Descripción detallada del Proyecto 3.", }, { id: 4, title: "Museo del Singani para la Comunidad de Yesera Sud.", images: ["/images/proyecto4-1.jpg", "/images/proyecto4-2.jpg", "/images/proyecto4-3.jpg", "/images/proyecto4-4.jpg"], description: "Descripción detallada del Proyecto 4.", },];
 
   useEffect(() => {
     const onScroll = () => {
