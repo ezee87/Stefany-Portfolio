@@ -1,0 +1,75 @@
+GUÍA VISUAL Y DE ANIMACIONES
+
+Dirección estética
+La web debe sentirse moderna, cálida, arquitectónica y premium. Debe combinar con renders de hormigón, piedra, madera, luz natural, tonos arena, interiores serenos y estética contemporánea.
+
+Paleta sugerida
+Fondo claro cálido: #F4EFE7
+Fondo secundario: #E8DFD3
+Texto principal: #1F1C18
+Texto secundario: #6E665C
+Acento cálido: #B28B67
+Fondo oscuro: #181614
+Texto sobre oscuro: #F5EFE6
+Bordes suaves: rgba(31, 28, 24, 0.12)
+
+Tipografía
+Usar una combinación elegante y moderna.
+Opciones sugeridas:
+- Títulos: Neue Montreal, Cormorant Garamond, Playfair Display, Editorial New, Instrument Serif o similar.
+- Texto: Inter, Manrope, Satoshi, Neue Haas Grotesk o similar.
+Si no hay tipografías instaladas, usar Google Fonts o fallback sobrio.
+
+Estilo de composición
+- Mucho espacio en blanco.
+- Imágenes grandes.
+- Grillas editoriales.
+- Bordes finos.
+- Esquinas muy leves o rectas, no demasiado redondeadas.
+- Evitar estética de dashboard o SaaS.
+- Evitar exceso de íconos.
+
+Animaciones principales
+1. Hero cinematic reveal
+- Imagen con scale-down inicial.
+- Texto aparece por líneas.
+- Parallax suave al scroll.
+
+2. Image reveal
+- Usar clip-path o máscara para revelar renders al entrar en viewport.
+- Duración elegante: 0.8s a 1.2s.
+
+3. Scroll storytelling en proyectos
+- Imagen sticky o transición horizontal controlada por ScrollTrigger.
+- Texto entra con stagger.
+- Cambio suave entre proyectos.
+
+4. Smooth scrolling
+- Usar Lenis si está disponible.
+- Integrarlo correctamente con GSAP ScrollTrigger.
+
+5. Microinteracciones
+- Hover de imágenes con scale 1.03.
+- Hover de botones con desplazamiento mínimo.
+- Links con subrayado animado.
+
+Cosas a evitar
+- Animaciones muy rápidas.
+- Efectos tipo glitch, neón o demasiado tecnológicos.
+- Saturar cada sección con movimientos distintos.
+- Usar demasiados colores.
+- Sombras pesadas.
+- Cards muy redondeadas estilo app.
+
+Responsive
+- En mobile, priorizar legibilidad y velocidad.
+- Reducir la complejidad de animaciones si es necesario.
+- Evitar scroll horizontal obligatorio en mobile salvo galerías con scroll-snap.
+- Mantener botones visibles y fáciles de tocar.
+
+Accesibilidad y performance
+- Contraste suficiente.
+- Alt text descriptivo en imágenes.
+- Lazy loading en imágenes que no sean hero.
+- Evitar animaciones que rompan el layout.
+- Respetar prefers-reduced-motion si es posible.

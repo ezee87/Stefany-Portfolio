@@ -1,0 +1,130 @@
+.section {
+  background: var(--color-bg);
+  padding-block: var(--section-padding);
+  border-top: 1px solid var(--color-border);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+}
+
+/* ─── Left Column ─── */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.intro {
+  font-size: 0.9rem;
+  line-height: 1.78;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+/* ─── Steps ─── */
+.steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border);
+}
+
+.step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding-block: 1.75rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: opacity 0.4s ease;
+  /* Legible at rest — active gets full opacity */
+  opacity: 0.72;
+}
+
+.stepActive {
+  opacity: 1;
+}
+
+.stepNum {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  line-height: 1;
+  min-width: 3rem;
+  transition: color 0.3s ease;
+}
+
+.stepContent {
+  padding-top: 0.3rem;
+}
+
+.stepTitle {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.stepBody {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ─── Right Column ─── */
+.rightCol {
+  /* scrolls naturally with the section */
+}
+
+.imgWrapper {
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .rightCol {
+    position: relative;
+    top: 0;
+    order: -1;
+  }
+
+  .img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .step {
+    opacity: 1;
+  }
+}

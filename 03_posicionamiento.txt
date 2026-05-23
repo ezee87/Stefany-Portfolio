@@ -1,0 +1,31 @@
+SECCIÓN: FRASE DE POSICIONAMIENTO
+
+Objetivo
+Bajar el impacto visual del hero a una declaración clara de valor: no se trata solo de hacer renders, sino de traducir ideas arquitectónicas en imágenes comprensibles y cuidadas.
+
+Título / frase principal
+Del concepto al espacio visualmente claro
+
+Texto
+Trabajo cada proyecto combinando criterio arquitectónico, sensibilidad estética y visualización 3D, para transformar ideas, planos o referencias en imágenes que comuniquen mejor el potencial del espacio.
+
+Diseño
+- Sección limpia, con fondo cálido.
+- Mucho espacio en blanco.
+- Texto grande, editorial.
+- Puede ocupar 70vh para dar pausa visual entre el hero y los proyectos.
+
+Imagen sugerida
+No usar imagen principal en esta sección. Dejar que funcione como respiro tipográfico.
+
+Detalle visual opcional
+Agregar tres palabras o conceptos pequeños debajo:
+Criterio espacial · Materialidad · Atmósfera
+
+Animación
+- Texto principal revelado por líneas con ScrollTrigger.
+- Palabras secundarias con stagger.
+- Fondo con cambio sutil de tono al entrar en viewport.
+
+Tono
+Elegante, sereno, profesional. Evitar lenguaje exagerado o demasiado comercial.

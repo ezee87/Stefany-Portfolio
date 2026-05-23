@@ -1,0 +1,124 @@
+SECCIÓN: PROYECTOS DESTACADOS
+
+Objetivo
+Mostrar los mejores trabajos de la arquitecta de forma visual, ordenada y persuasiva. Esta es la sección central de la web. Debe permitir ver calidad, variedad y criterio profesional.
+
+Título de sección
+Proyectos destacados
+
+Texto introductorio
+Una selección de proyectos residenciales, comerciales y visualizaciones 3D desarrolladas para comunicar espacios con claridad, atmósfera y detalle.
+
+Formato recomendado
+Usar una experiencia moderna de scroll. Opciones válidas:
+1. Cards grandes con imagen sticky y texto que cambia al hacer scroll.
+2. Galería horizontal controlada por ScrollTrigger.
+3. Bloques editoriales alternando imagen grande + texto.
+
+Recomendación principal
+Implementar una sección con proyectos en bloques grandes. Cada proyecto debe tener:
+- Imagen de portada grande.
+- Título.
+- Categoría.
+- Descripción breve.
+- Galería secundaria de 3 a 6 imágenes.
+- Tags técnicos pequeños.
+
+PROYECTO 1
+Título: Vivienda unifamiliar HM
+Categoría: Arquitectura residencial · Visualización 3D · 864 m²
+Descripción:
+Vivienda unifamiliar de gran escala con una estética contemporánea, volúmenes de hormigón, interiores de doble altura y una fuerte integración entre arquitectura, luz natural, vegetación y espacios exteriores. La propuesta combina funcionalidad, presencia visual y una atmósfera cálida dentro de una arquitectura sobria y expresiva.
+Tags:
+Arquitectura residencial, Modelado 3D, Render arquitectónico, Interior-exterior, Hormigón
+Imagen de portada:
+public/images/vivienda-unifamiliar-1.png
+Galería:
+public/images/vivienda-unifamiliar-1.png
+public/images/vivienda-unifamiliar-2.png
+public/images/vivienda-unifamiliar-3.png
+public/images/vivienda-unifamiliar-4.png
+public/images/vivienda-unifamiliar-5.png
+public/images/vivienda-unifamiliar-6.jpg
+
+PROYECTO 2
+Título: Spa Wellness
+Categoría: Interiorismo comercial · Wellness · Visualización 3D
+Descripción:
+Propuesta de spa inspirada en una estética mediterránea, cálida y sensorial. El proyecto trabaja con tonos arena, piedra natural, iluminación indirecta, vegetación y materiales de textura rústica para construir una experiencia serena, envolvente y contemporánea.
+Tags:
+Interiorismo comercial, Wellness, Render 3D, Materialidad, Iluminación
+Imagen de portada:
+public/images/spa-1.png
+Galería:
+public/images/spa-1.png
+public/images/spa-2.png
+public/images/spa-3.png
+public/images/spa-4.png
+public/images/spa-5.png
+public/images/spa-6.png
+
+PROYECTO 3
+Título: Diseño interior de departamento
+Categoría: Interiorismo residencial · Departamento · 85 m²
+Descripción:
+Diseño integral de interiores para un departamento de 85 m², enfocado en maximizar funcionalidad, amplitud visual y confort. La propuesta integra soluciones de almacenamiento, una paleta cálida y una estética contemporánea para lograr un espacio moderno, eficiente y bien resuelto.
+Tags:
+Interiorismo residencial, Departamento, Funcionalidad, Amplitud visual, Render 3D
+Imagen de portada:
+public/images/depto-1.png
+Galería:
+public/images/depto-1.png
+public/images/depto-2.png
+public/images/depto-3.png
+public/images/depto-4.png
+
+PROYECTO 4
+Título: Clínica Dental NG
+Categoría: Interiorismo clínico · Clínica dental · 103 m²
+Descripción:
+Proyecto de diseño interior para clínica dental de 103 m², enfocado en generar un espacio funcional, higiénico y estéticamente atractivo. La propuesta optimiza la distribución para una correcta circulación entre áreas clínicas y de espera, incorporando iluminación estratégica, materiales de fácil mantenimiento y una identidad visual cálida que mejora la experiencia del paciente y refuerza la confianza en el servicio.
+Tags:
+Diseño interior, Clínica dental, Espacio clínico, Funcionalidad, Identidad visual
+Imagen de portada:
+public/images/dental1.png
+Galería:
+public/images/dental1.png
+public/images/dental2.png
+public/images/dental3.png
+public/images/dental4.png
+public/images/dental5.png
+public/images/dental6.png
+
+PROYECTO 5
+Título: Renders fotorrealistas
+Categoría: Visualización arquitectónica · Modelado 3D · Postproducción
+Descripción:
+Selección de visualizaciones arquitectónicas desarrolladas para explorar atmósferas, materialidad, iluminación y composición espacial. Una muestra de renders interiores y exteriores con distintos lenguajes visuales, pensados para comunicar con claridad la intención de cada espacio.
+Tags:
+Render fotorrealista, Modelado 3D, Iluminación, Materialidad, Postproducción
+Imagen de portada:
+public/images/render1.png
+Galería:
+public/images/render1.png
+public/images/render2.png
+public/images/render3.png
+public/images/render4.png
+public/images/render5.png
+public/images/render6.png
+
+Animaciones recomendadas
+- Cada proyecto entra con image reveal: máscara vertical u horizontal.
+- Texto con fade-up y stagger.
+- Galería secundaria con hover suave: scale 1.03, overlay oscuro muy leve y título opcional.
+- En desktop, hacer que la imagen principal sea sticky mientras el texto del proyecto aparece.
+- Usar ScrollTrigger para transiciones entre proyectos.
+- Evitar efectos bruscos o demasiado llamativos.
+
+Interacción recomendada
+- Al hacer clic en una imagen secundaria, abrir modal/lightbox elegante.
+- El modal debe permitir navegar entre imágenes del proyecto.
+- En mobile, usar carrusel horizontal simple con scroll-snap.
+
+Notas de implementación
+Centralizar estos datos en src/data/projects.js para no hardcodear todo dentro del componente.

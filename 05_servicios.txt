@@ -1,0 +1,54 @@
+SECCIÓN: SERVICIOS
+
+Objetivo
+Explicar rápidamente qué puede contratar el visitante, sin convertir la web en una lista extensa. Debe ser claro, directo y orientado a Workana.
+
+Título
+Cómo puedo ayudarte
+
+Texto introductorio
+Servicios para convertir ideas, planos o referencias en propuestas espaciales claras y visualizaciones profesionales.
+
+Servicio 1
+Título: Diseño arquitectónico residencial
+Descripción:
+Desarrollo de propuestas espaciales para viviendas, distribución, criterios de uso, materialidad y visualización del proyecto.
+Imagen sugerida:
+public/images/vivienda-unifamiliar-3.png
+
+Servicio 2
+Título: Diseño interior
+Descripción:
+Ambientación, composición, elección de materiales, mobiliario, iluminación y resolución visual de espacios residenciales, clínicos o comerciales.
+Imagen sugerida:
+public/images/depto-2.png
+
+Servicio 3
+Título: Modelado 3D y renders arquitectónicos
+Descripción:
+Imágenes profesionales para presentar proyectos, validar decisiones, comunicar ideas o mostrar una propuesta con mayor claridad.
+Imagen sugerida:
+public/images/render2.png
+
+Servicio 4 opcional
+Título: Visualización para espacios comerciales
+Descripción:
+Renders e interiorismo para clínicas, espacios wellness y proyectos de atención al cliente que necesitan comunicar confianza, atmósfera y funcionalidad.
+Imagen sugerida:
+public/images/dental2.png
+
+Diseño
+- Grid de 3 o 4 cards.
+- Cards con fondo claro, borde fino y hover elegante.
+- Cada card puede tener una imagen recortada en formato horizontal o vertical.
+- Mantener textos breves.
+
+Animaciones
+- Cards con stagger al entrar en viewport.
+- Hover: imagen con scale suave, borde con opacidad mayor, título con desplazamiento mínimo.
+- No usar animaciones excesivas en esta sección.
+
+Responsive
+- Desktop: 3 o 4 columnas según ancho.
+- Tablet: 2 columnas.
+- Mobile: 1 columna.

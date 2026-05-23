@@ -1,0 +1,54 @@
+SECCIÓN: HERO PRINCIPAL
+
+Objetivo
+Generar impacto inmediato. Debe comunicar en pocos segundos que se trata de una arquitecta / visualizadora 3D con criterio estético, calidad de imagen y capacidad para presentar proyectos profesionalmente.
+
+Imagen principal
+public/images/hero.png
+
+Título principal
+Arquitectura, interiores y visualización 3D para presentar tu proyecto con claridad
+
+Texto secundario
+Diseño espacios y desarrollo renders arquitectónicos pensados para que cada idea pueda entenderse, evaluarse y presentarse con una imagen profesional.
+
+CTAs
+Botón principal: Ver proyectos
+- Scroll hacia la sección de proyectos destacados.
+
+Botón secundario: Contratar por Workana
+- Llevar al enlace de Workana o a una constante WORKANA_URL editable.
+
+Diseño
+- Hero fullscreen o casi fullscreen: min-height 100vh.
+- Imagen hero de fondo ocupando gran parte de la pantalla.
+- Overlay oscuro muy sutil para legibilidad del texto.
+- Texto alineado abajo a la izquierda en desktop, centrado o inferior en mobile.
+- Máximo ancho del bloque de texto: 780px.
+- Usar una tipografía grande y elegante.
+- El título debe tener presencia, pero no sentirse publicitario agresivo.
+
+Layout sugerido
+Desktop:
+- Imagen a pantalla completa.
+- Texto en una capa por encima.
+- Pequeño indicador de scroll en la parte inferior.
+
+Mobile:
+- Mantener imagen de fondo.
+- Reducir título.
+- Botones apilados o en dos líneas.
+
+Animaciones
+- Imagen: scale inicial 1.08 a 1.00 durante la carga.
+- Texto: aparición por líneas, con stagger suave.
+- Botones: fade-up posterior al título.
+- ScrollTrigger: al avanzar al siguiente bloque, la imagen del hero puede tener parallax lento y el contenido puede desvanecerse hacia arriba.
+
+Microdetalle recomendado
+Agregar una pequeña etiqueta sobre el título:
+Arquitectura · Interiorismo · Render 3D
+
+No usar
+- No usar la palabra “vendibles”.
+- No incluir datos de contacto.

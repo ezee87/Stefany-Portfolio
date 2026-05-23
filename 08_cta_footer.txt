@@ -1,0 +1,50 @@
+SECCIÓN: CTA FINAL Y FOOTER
+
+Objetivo
+Cerrar la página llevando al usuario a tomar acción dentro de Workana, sin incluir datos de contacto externos.
+
+CTA final
+Título:
+¿Tienes un proyecto que necesita verse con más claridad?
+
+Texto:
+Puedo ayudarte a transformar tu idea, plano o referencia en una propuesta visual profesional, lista para presentar y evaluar.
+
+Botón:
+Contratar por Workana
+
+Imagen de fondo sugerida
+public/images/spa-6.png
+
+Imagen alternativa
+public/images/render6.png
+
+Diseño CTA
+- Sección visual de alto impacto, pero más calma que el hero.
+- Imagen de fondo con overlay oscuro cálido.
+- Texto centrado.
+- Botón visible y elegante.
+- Altura sugerida: 70vh desktop, 60vh mobile.
+
+Animación CTA
+- Imagen con parallax suave.
+- Título con reveal por línea.
+- Botón con hover sutil.
+
+Footer
+Texto:
+Arquitectura · Interiorismo · Visualización 3D
+Disponible para proyectos freelance a través de Workana
+
+No incluir
+- Email
+- Teléfono
+- WhatsApp
+- Instagram
+- Dirección
+
+Diseño footer
+- Muy simple.
+- Fondo oscuro o fondo cálido, según el CTA.
+- Texto pequeño.
+- Puede incluir links internos mínimos: Proyectos, Servicios, Proceso.

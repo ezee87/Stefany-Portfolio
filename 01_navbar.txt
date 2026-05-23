@@ -1,0 +1,39 @@
+SECCIÓN: NAVBAR
+
+Objetivo
+Crear una navegación mínima, elegante y funcional, sin robar protagonismo a los renders.
+
+Contenido
+Logo textual o nombre simple:
+Arquitectura & Visualización 3D
+
+Links internos
+- Proyectos
+- Servicios
+- Proceso
+- Workana
+
+CTA del navbar
+Texto: Contratar por Workana
+Acción: llevar al mismo destino que el CTA principal de la página. Si todavía no hay URL definitiva, dejar href="#workana" o una constante WORKANA_URL fácil de reemplazar.
+
+Diseño
+- Navbar fijo o sticky.
+- Fondo transparente sobre el hero al inicio.
+- Al hacer scroll, cambiar a fondo blur / glass suave.
+- Altura aproximada: 72px desktop, 64px mobile.
+- Tipografía limpia, pequeña, con tracking sutil.
+- CTA tipo botón outline o botón sólido discreto.
+
+Animación
+- Entrada inicial suave desde arriba, con opacidad 0 a 1.
+- Al hacer scroll, transición de fondo transparente a glass.
+- En hover de links: subrayado fino animado o cambio de opacidad.
+
+Responsive
+- En mobile, usar menú hamburguesa simple.
+- Menú mobile fullscreen o panel lateral con fondo cálido.
+- Cerrar el menú al hacer clic en una sección.
+
+Notas
+No incluir datos de contacto ni redes sociales.

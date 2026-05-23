@@ -1,0 +1,45 @@
+SECCIÓN: PROCESO DE TRABAJO
+
+Objetivo
+Reducir incertidumbre del potencial cliente. Mostrar que trabajar con la arquitecta es ordenado, claro y profesional.
+
+Título
+Un proceso simple para avanzar con claridad
+
+Texto introductorio
+Desde la primera idea hasta la entrega final, el proceso se organiza para que cada decisión sea fácil de revisar y cada avance tenga una dirección clara.
+
+Pasos
+
+1. Entiendo tu proyecto
+Reviso planos, referencias, necesidades, estilo buscado y nivel de detalle esperado.
+
+2. Desarrollo la propuesta
+Trabajo la distribución, materialidad, atmósfera, iluminación y modelado del espacio.
+
+3. Creo las visualizaciones
+Genero renders que permitan ver el proyecto con una lectura clara y profesional.
+
+4. Ajustamos detalles
+Se revisan observaciones y se aplican correcciones para llegar a una entrega final cuidada.
+
+Imagen sugerida de apoyo
+public/images/spa-3.png
+
+Alternativa de imagen si se busca algo más arquitectónico
+public/images/vivienda-unifamiliar-4.png
+
+Diseño
+- Sección con pasos numerados.
+- En desktop, texto a un lado e imagen sticky al otro.
+- En mobile, pasos en vertical e imagen entre el título y los pasos.
+- Numeración grande y elegante: 01, 02, 03, 04.
+
+Animación
+- ScrollTrigger para activar cada paso.
+- Cuando un paso está activo, resaltar su número y aumentar levemente la opacidad.
+- Imagen con parallax suave.
+- Línea vertical de progreso opcional que se completa al hacer scroll.
+
+Tono
+Claro, concreto y tranquilizador.

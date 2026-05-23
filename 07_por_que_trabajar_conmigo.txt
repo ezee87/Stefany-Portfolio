@@ -1,0 +1,42 @@
+SECCIÓN: POR QUÉ TRABAJAR CONMIGO
+
+Objetivo
+Dar razones de contratación sin sonar genérico. Debe reforzar que la propuesta combina arquitectura, estética, visualización y proceso.
+
+Título
+Diseño con criterio, imagen y detalle
+
+Bloques
+
+Criterio arquitectónico
+Cada imagen parte de una lectura espacial, no solo de una composición estética.
+
+Estética cuidada
+Trabajo con paletas, materiales, iluminación y atmósferas coherentes con cada proyecto.
+
+Claridad visual
+El objetivo es que cada render ayude a entender mejor el espacio y tomar decisiones.
+
+Proceso ordenado
+Comunicación simple, avances claros y entregas orientadas al resultado final.
+
+Imagen sugerida
+public/images/render4.png
+
+Imagen alternativa
+public/images/vivienda-unifamiliar-5.png
+
+Diseño
+- Puede ser una sección de fondo oscuro cálido para contrastar con el resto.
+- Texto en blanco cálido, no blanco puro.
+- Cards minimalistas con borde sutil.
+- Imagen grande de apoyo, parcial o enmascarada.
+
+Animación
+- Fondo oscuro aparece con transición suave desde la sección anterior.
+- Cada bloque entra con fade-up.
+- Imagen con reveal mediante clip-path.
+- Hover de cards: leve elevación o cambio de borde.
+
+Nota
+Evitar frases demasiado genéricas como “pasión por el diseño”. Mantenerlo profesional y específico.
