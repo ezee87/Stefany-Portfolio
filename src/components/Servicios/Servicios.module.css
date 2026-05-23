@@ -94,6 +94,13 @@
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    background: var(--color-bg-secondary);
+    border: none;
+  }
+
+  .card {
+    border: 1px solid var(--color-border);
   }
 
   .imgWrapper {

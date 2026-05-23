@@ -75,7 +75,7 @@ export default function Hero() {
 
       <div className={`container ${styles.content}`}>
         <span ref={labelRef} className={`section-label ${styles.label}`}>
-          Arquitectura · Interiorismo · Render 3D
+          Arquitectura · Interiorismo · Visualización 2D y 3D
         </span>
 
         <h1 ref={titleRef} className={styles.title}>
