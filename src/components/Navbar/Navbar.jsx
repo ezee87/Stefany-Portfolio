@@ -22,6 +22,12 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   // Entrance animation
   useGSAP(() => {
     gsap.from(navRef.current, {
@@ -42,63 +48,68 @@ export default function Navbar() {
   }
 
   return (
-    <header
-      ref={navRef}
-      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
-      aria-label="Navegación principal"
-    >
-      <div className={`container ${styles.inner}`}>
-        <a href="#" className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <span className={styles.logoMain}>Stefany Aguiar</span>
-        </a>
+    <>
+      <header
+        ref={navRef}
+        className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
+        aria-label="Navegación principal"
+      >
+        <div className={`container ${styles.inner}`}>
+          <a href="#" className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <span className={styles.logoMain}>Stefany Aguiar</span>
+          </a>
 
-        <nav className={styles.desktopNav} aria-label="Links de navegación">
-          {NAV_LINKS.map((link) =>
-            link.external ? (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.navLink}
-              >
-                {link.label}
-              </a>
-            ) : (
-              <button
-                key={link.label}
-                className={styles.navLink}
-                onClick={() => handleNavClick(link.href)}
-              >
-                {link.label}
-              </button>
-            )
-          )}
-        </nav>
+          <nav className={styles.desktopNav} aria-label="Links de navegación">
+            {NAV_LINKS.map((link) =>
+              link.external ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.navLink}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button
+                  key={link.label}
+                  className={styles.navLink}
+                  onClick={() => handleNavClick(link.href)}
+                >
+                  {link.label}
+                </button>
+              )
+            )}
+          </nav>
 
-        <a
-          href={WORKANA_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.ctaBtn}
-        >
-          Contratar por Workana
-        </a>
+          <a
+            href={WORKANA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ctaBtn}
+          >
+            Contratar por Workana
+          </a>
 
-        <button
-          className={styles.hamburger}
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
-          aria-expanded={menuOpen}
-        >
-          <span className={`${styles.bar} ${menuOpen ? styles.barOpen1 : ''}`} />
-          <span className={`${styles.bar} ${menuOpen ? styles.barOpen2 : ''}`} />
-          <span className={`${styles.bar} ${menuOpen ? styles.barOpen3 : ''}`} />
-        </button>
-      </div>
+          <button
+            className={`${styles.hamburger} ${scrolled ? styles.hamburgerScrolled : ''}`}
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={menuOpen}
+          >
+            <span className={`${styles.bar} ${menuOpen ? styles.barOpen1 : ''}`} />
+            <span className={`${styles.bar} ${menuOpen ? styles.barOpen2 : ''}`} />
+            <span className={`${styles.bar} ${menuOpen ? styles.barOpen3 : ''}`} />
+          </button>
+        </div>
+      </header>
 
-      {/* Mobile menu */}
-      <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`} aria-hidden={!menuOpen}>
+      {/* Mobile menu — outside <header> to avoid backdrop-filter containing block */}
+      <div
+        className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}
+        aria-hidden={!menuOpen}
+      >
         <nav aria-label="Menú mobile">
           {NAV_LINKS.map((link) =>
             link.external ? (
@@ -132,6 +143,6 @@ export default function Navbar() {
           </a>
         </nav>
       </div>
-    </header>
+    </>
   )
 }

@@ -147,9 +147,13 @@
   display: block;
   width: 22px;
   height: 1.5px;
-  background: var(--color-text);
+  background: rgba(245, 239, 230, 0.9);
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
+}
+
+.hamburgerScrolled .bar {
+  background: var(--color-text);
 }
 
 .barOpen1 { transform: translateY(6.5px) rotate(45deg); }
@@ -170,7 +174,7 @@
   pointer-events: none;
   transform: translateY(-1rem);
   transition: opacity 0.35s ease, transform 0.35s ease;
-  z-index: 99;
+  z-index: 98;
 }
 
 .mobileMenu nav {

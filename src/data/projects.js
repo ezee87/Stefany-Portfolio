@@ -1,20 +1,5 @@
 export const projects = [
   {
-    id: 'vivienda-hm',
-    title: 'Vivienda unifamiliar HM',
-    category: 'Arquitectura residencial · Visualización 3D · 864 m²',
-    description:
-      'Vivienda unifamiliar de gran escala con una estética contemporánea, volúmenes de hormigón, interiores de doble altura y una fuerte integración entre arquitectura, luz natural, vegetación y espacios exteriores. La propuesta combina funcionalidad, presencia visual y una atmósfera cálida dentro de una arquitectura sobria y expresiva.',
-    cover: '/images/vivienda-unifamiliar-1.png',
-    gallery: [
-      '/images/vivienda-unifamiliar-1.png',
-      '/images/vivienda-unifamiliar-2.png',
-      '/images/vivienda-unifamiliar-3.png',
-      '/images/vivienda-unifamiliar-4.png',
-      '/images/vivienda-unifamiliar-5.png',
-    ],
-  },
-  {
     id: 'spa-wellness',
     title: 'Spa Wellness',
     category: 'Interiorismo comercial · Wellness · Visualización 3D',
@@ -27,6 +12,21 @@ export const projects = [
       '/images/spa-4.png',
       '/images/spa-5.png',
       '/images/spa-6.png',
+    ],
+  },
+  {
+    id: 'vivienda-hm',
+    title: 'Vivienda unifamiliar HM',
+    category: 'Arquitectura residencial · Visualización 3D · 864 m²',
+    description:
+      'Vivienda unifamiliar de gran escala con una estética contemporánea, volúmenes de hormigón, interiores de doble altura y una fuerte integración entre arquitectura, luz natural, vegetación y espacios exteriores. La propuesta combina funcionalidad, presencia visual y una atmósfera cálida dentro de una arquitectura sobria y expresiva.',
+    cover: '/images/vivienda-unifamiliar-1.png',
+    gallery: [
+      '/images/vivienda-unifamiliar-1.png',
+      '/images/vivienda-unifamiliar-2.png',
+      '/images/vivienda-unifamiliar-3.png',
+      '/images/vivienda-unifamiliar-4.png',
+      '/images/vivienda-unifamiliar-5.png',
     ],
   },
   {
