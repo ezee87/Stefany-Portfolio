@@ -96,6 +96,24 @@
   transform: translateY(-3px);
 }
 
+.calendarSection {
+  position: relative;
+  z-index: 1;
+  background: #f2efe9;
+}
+
+.calendarFrame {
+  display: block;
+  width: 100%;
+  min-height: 900px;
+}
+
+@media (max-width: 768px) {
+  .calendarFrame {
+    min-height: 760px;
+  }
+}
+
 /* ─── Footer ─── */
 .footer {
   background: var(--color-dark);

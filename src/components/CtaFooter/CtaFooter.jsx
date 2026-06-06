@@ -13,6 +13,21 @@ export default function CtaFooter() {
   const btnRef = useRef(null)
 
   useEffect(() => {
+    const scriptId = 'iqautomated-form-embed'
+
+    if (document.getElementById(scriptId)) {
+      return
+    }
+
+    const script = document.createElement('script')
+    script.id = scriptId
+    script.src = 'https://links.iqautomated.io/js/form_embed.js'
+    script.type = 'text/javascript'
+    script.async = true
+    document.body.appendChild(script)
+  }, [])
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
       // Image parallax — fromTo keeps the image centered across the scroll range
       // The wrapper extends 20% top/bottom in CSS, so ±10% movement always covers the section
@@ -101,18 +116,14 @@ export default function CtaFooter() {
         </div>
       </section>
 
-      <section>
+      <section className={styles.calendarSection} aria-label="Calendario de reservas">
   <iframe
     src="https://links.iqautomated.io/widget/booking/7Sk8mmne4xexnAx1tKYA"
     style={{ width: '100%', border: 'none', overflow: 'hidden' }}
+    className={styles.calendarFrame}
     scrolling="no"
     id="7Sk8mmne4xexnAx1tKYA_1780714273916"
   ></iframe>
-
-  <script
-    src="https://links.iqautomated.io/js/form_embed.js"
-    type="text/javascript"
-  ></script>
 </section>
 
       {/* Footer */}
