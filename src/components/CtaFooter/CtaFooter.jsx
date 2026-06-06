@@ -104,7 +104,7 @@ export default function CtaFooter() {
       <section>
   <iframe
     src="https://links.iqautomated.io/widget/booking/7Sk8mmne4xexnAx1tKYA"
-    style="width: 100%; border: none; overflow: hidden;"
+    style={{ width: '100%', border: 'none', overflow: 'hidden' }}
     scrolling="no"
     id="7Sk8mmne4xexnAx1tKYA_1780714273916"
   ></iframe>
