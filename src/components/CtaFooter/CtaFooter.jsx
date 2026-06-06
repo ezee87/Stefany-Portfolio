@@ -101,6 +101,20 @@ export default function CtaFooter() {
         </div>
       </section>
 
+      <section>
+  <iframe
+    src="https://links.iqautomated.io/widget/booking/7Sk8mmne4xexnAx1tKYA"
+    style="width: 100%; border: none; overflow: hidden;"
+    scrolling="no"
+    id="7Sk8mmne4xexnAx1tKYA_1780714273916"
+  ></iframe>
+
+  <script
+    src="https://links.iqautomated.io/js/form_embed.js"
+    type="text/javascript"
+  ></script>
+</section>
+
       {/* Footer */}
       <footer className={styles.footer} aria-label="Pie de página">
         <div className={`container ${styles.footerInner}`}>
