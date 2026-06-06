@@ -105,7 +105,7 @@ export default function CtaFooter() {
       <footer className={styles.footer} aria-label="Pie de página">
         <div className={`container ${styles.footerInner}`}>
           <div className={styles.footerLeft}>
-            <p className={styles.footerBrand}>Arquitectura · Interiorismo · Visualización 3D</p>
+            <p className={styles.footerBrand}>Arquitectura · Interiorismo · Visualización 2D y 3D</p>
             <p className={styles.footerTagline}>
               Disponible para proyectos freelance a través de Workana
             </p>
