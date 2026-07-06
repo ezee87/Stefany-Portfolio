@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { WORKANA_URL } from '../../constants'
 import styles from './CtaFooter.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -10,7 +9,6 @@ export default function CtaFooter() {
   const ctaRef = useRef(null)
   const imgRef = useRef(null)
   const textRef = useRef(null)
-  const btnRef = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -41,17 +39,6 @@ export default function CtaFooter() {
         scrollTrigger: {
           trigger: ctaRef.current,
           start: 'top 70%',
-        },
-      })
-
-      gsap.from(btnRef.current, {
-        opacity: 0,
-        y: 20,
-        duration: 0.7,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: btnRef.current,
-          start: 'top 80%',
         },
       })
     }, ctaRef)
@@ -88,16 +75,6 @@ export default function CtaFooter() {
             Puedo ayudarte a transformar tu idea, plano o referencia en una propuesta
             visual profesional, lista para presentar y evaluar.
           </p>
-
-          <a
-            ref={btnRef}
-            href={WORKANA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.ctaBtn}
-          >
-            Contratar por Workana
-          </a>
         </div>
       </section>
 
@@ -107,7 +84,7 @@ export default function CtaFooter() {
           <div className={styles.footerLeft}>
             <p className={styles.footerBrand}>Arquitectura · Interiorismo · Visualización 2D y 3D</p>
             <p className={styles.footerTagline}>
-              Disponible para proyectos freelance a través de Workana
+              Disponible para proyectos freelance
             </p>
           </div>
 

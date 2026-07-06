@@ -11,11 +11,10 @@ Links internos
 - Proyectos
 - Servicios
 - Proceso
-- Workana
 
 CTA del navbar
-Texto: Contratar por Workana
-Acción: llevar al mismo destino que el CTA principal de la página. Si todavía no hay URL definitiva, dejar href="#workana" o una constante WORKANA_URL fácil de reemplazar.
+Texto: Solicitar proyecto
+Acción: llevar al CTA principal de la página.
 
 Diseño
 - Navbar fijo o sticky.

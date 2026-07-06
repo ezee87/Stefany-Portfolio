@@ -16,8 +16,8 @@ CTAs
 Botón principal: Ver proyectos
 - Scroll hacia la sección de proyectos destacados.
 
-Botón secundario: Contratar por Workana
-- Llevar al enlace de Workana o a una constante WORKANA_URL editable.
+Botón secundario: Solicitar proyecto
+- Llevar al CTA final de la página.
 
 Diseño
 - Hero fullscreen o casi fullscreen: min-height 100vh.

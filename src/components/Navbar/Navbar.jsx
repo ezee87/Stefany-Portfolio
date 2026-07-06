@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { NAV_LINKS, WORKANA_URL } from '../../constants'
+import { NAV_LINKS } from '../../constants'
 import styles from './Navbar.module.css'
 
 export default function Navbar() {
@@ -83,15 +83,6 @@ export default function Navbar() {
             )}
           </nav>
 
-          <a
-            href={WORKANA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.ctaBtn}
-          >
-            Contratar por Workana
-          </a>
-
           <button
             className={`${styles.hamburger} ${scrolled ? styles.hamburgerScrolled : ''}`}
             onClick={() => setMenuOpen((v) => !v)}
@@ -133,14 +124,6 @@ export default function Navbar() {
               </button>
             )
           )}
-          <a
-            href={WORKANA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.mobileLink} ${styles.mobileCta}`}
-          >
-            Contratar por Workana
-          </a>
         </nav>
       </div>
     </>

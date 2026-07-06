@@ -1,11 +1,11 @@
 SITIO WEB PORTFOLIO — ARQUITECTA FREELANCER
 
 Objetivo principal
-Crear una landing / portfolio de alto impacto para promocionar servicios de arquitectura, interiorismo y visualización 3D como freelancer. La página debe ayudar a que una persona que llega desde Workana entienda rápido la calidad del trabajo, el tipo de proyectos realizados y por qué conviene contratarla.
+Crear una landing / portfolio de alto impacto para promocionar servicios de arquitectura, interiorismo y visualización 3D como freelancer. La página debe ayudar a que una persona entienda rápido la calidad del trabajo, el tipo de proyectos realizados y por qué conviene contratarla.
 
 Restricciones importantes
 - No incluir teléfono, email, WhatsApp, Instagram ni datos de contacto externos.
-- El único CTA debe orientar a contratar o continuar por Workana.
+- El único CTA debe orientar a contratación freelance.
 - No usar la palabra “vendibles”. Reemplazar por términos como: claros, presentables, profesionales, atractivos, con criterio arquitectónico, visualmente sólidos.
 - No afirmar que un proyecto fue construido si no está explícitamente indicado.
 - Usar lenguaje elegante, directo y profesional.

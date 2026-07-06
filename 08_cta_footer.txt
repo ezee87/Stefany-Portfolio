@@ -1,7 +1,7 @@
 SECCIÓN: CTA FINAL Y FOOTER
 
 Objetivo
-Cerrar la página llevando al usuario a tomar acción dentro de Workana, sin incluir datos de contacto externos.
+Cerrar la página llevando al usuario a tomar acción, sin incluir datos de contacto externos.
 
 CTA final
 Título:
@@ -11,7 +11,7 @@ Texto:
 Puedo ayudarte a transformar tu idea, plano o referencia en una propuesta visual profesional, lista para presentar y evaluar.
 
 Botón:
-Contratar por Workana
+Solicitar proyecto
 
 Imagen de fondo sugerida
 public/images/spa-6.png
@@ -34,7 +34,7 @@ Animación CTA
 Footer
 Texto:
 Arquitectura · Interiorismo · Visualización 3D
-Disponible para proyectos freelance a través de Workana
+Disponible para proyectos freelance
 
 No incluir
 - Email

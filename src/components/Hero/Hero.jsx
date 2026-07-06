@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { WORKANA_URL } from '../../constants'
 import styles from './Hero.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -93,14 +92,6 @@ export default function Hero() {
           <button className={styles.btnPrimary} onClick={scrollToProjects}>
             Ver proyectos
           </button>
-          <a
-            href={WORKANA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.btnSecondary}
-          >
-            Contratar por Workana
-          </a>
         </div>
       </div>
 
