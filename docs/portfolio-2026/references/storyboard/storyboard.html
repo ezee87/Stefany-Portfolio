@@ -1,0 +1,304 @@
+<style>
+  #stefany-storyboard {
+    color-scheme: light dark;
+    width: 100%;
+    color: light-dark(#24231f, #eee9df);
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  }
+  #stefany-storyboard .sb-shell {
+    background-color: light-dark(#dad5ca, #232321);
+    background-image:
+      linear-gradient(light-dark(rgba(60,55,45,.08), rgba(255,255,255,.05)) 1px, transparent 1px),
+      linear-gradient(90deg, light-dark(rgba(60,55,45,.08), rgba(255,255,255,.05)) 1px, transparent 1px);
+    background-size: 24px 24px;
+    padding: 20px;
+    min-height: 520px;
+    display: grid;
+    gap: 16px;
+  }
+  #stefany-storyboard .sb-top,
+  #stefany-storyboard .sb-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  #stefany-storyboard .sb-kicker,
+  #stefany-storyboard .sb-count,
+  #stefany-storyboard .sb-motion,
+  #stefany-storyboard .sb-folio {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: .75rem;
+  }
+  #stefany-storyboard .sb-title {
+    margin: 3px 0 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+  }
+  #stefany-storyboard .sb-stage {
+    min-height: 390px;
+    display: grid;
+    place-items: center;
+    perspective: 1500px;
+    overflow: hidden;
+    position: relative;
+  }
+  #stefany-storyboard .sb-book {
+    width: min(880px, 94%);
+    height: 350px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transform: rotateX(4deg) rotateZ(-1deg);
+    transition: transform .65s cubic-bezier(.2,.8,.2,1), width .65s cubic-bezier(.2,.8,.2,1);
+    filter: drop-shadow(0 24px 20px rgba(0,0,0,.2));
+  }
+  #stefany-storyboard[data-scene="0"] .sb-book {
+    width: min(360px, 72%);
+    grid-template-columns: 1fr;
+    transform: rotateX(8deg) rotateY(-8deg) rotateZ(-2deg);
+  }
+  #stefany-storyboard[data-scene="4"] .sb-book {
+    width: min(980px, 108%);
+    transform: rotateX(0) rotateZ(0) scale(1.04);
+  }
+  #stefany-storyboard .sb-page {
+    position: relative;
+    overflow: hidden;
+    padding: 28px;
+    background: light-dark(#f4f0e7, #34322e);
+    border: 1px solid light-dark(rgba(36,35,31,.16), rgba(238,233,223,.14));
+  }
+  #stefany-storyboard .sb-left { box-shadow: inset -18px 0 24px -28px rgba(0,0,0,.8); }
+  #stefany-storyboard .sb-right { box-shadow: inset 18px 0 24px -28px rgba(0,0,0,.8); }
+  #stefany-storyboard[data-scene="0"] .sb-right { display: none; }
+  #stefany-storyboard .sb-page::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .28;
+    background-image: radial-gradient(light-dark(#867e70, #b7afa2) .5px, transparent .5px);
+    background-size: 5px 5px;
+  }
+  #stefany-storyboard .sb-page-content { position: relative; z-index: 1; height: 100%; }
+  #stefany-storyboard .sb-display {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: .95;
+    margin: 0;
+  }
+  #stefany-storyboard .sb-small { max-width: 28ch; line-height: 1.45; }
+  #stefany-storyboard .sb-plan {
+    position: absolute;
+    inset: 24% 8% 8% 18%;
+    border: 1px solid currentColor;
+    opacity: .5;
+    background:
+      linear-gradient(90deg, transparent 33%, currentColor 33%, currentColor 33.4%, transparent 33.4%, transparent 68%, currentColor 68%, currentColor 68.4%, transparent 68.4%),
+      linear-gradient(transparent 42%, currentColor 42%, currentColor 42.4%, transparent 42.4%, transparent 72%, currentColor 72%, currentColor 72.4%, transparent 72.4%);
+  }
+  #stefany-storyboard .sb-photo {
+    position: absolute;
+    background: linear-gradient(145deg, light-dark(#b08a69, #8e6549), light-dark(#6d796a, #485548));
+    box-shadow: 0 16px 24px rgba(0,0,0,.18);
+  }
+  #stefany-storyboard .sb-photo::before {
+    content: '';
+    position: absolute;
+    inset: 12% 10%;
+    border: 1px solid rgba(255,255,255,.55);
+    clip-path: polygon(0 100%, 0 54%, 18% 54%, 18% 27%, 45% 27%, 45% 46%, 67% 46%, 67% 12%, 100% 12%, 100% 100%);
+    background: rgba(255,255,255,.08);
+  }
+  #stefany-storyboard .sb-photo-main { inset: 18% 8% 8% 26%; transform: rotate(2deg); }
+  #stefany-storyboard .sb-photo-small { width: 42%; height: 38%; right: 6%; bottom: 8%; transform: rotate(-4deg); }
+  #stefany-storyboard .sb-swatch {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    margin: 8px 5px 0 0;
+    background: light-dark(#a06c50, #9c6b50);
+  }
+  #stefany-storyboard .sb-swatch:nth-child(2) { background: light-dark(#d0c6b4, #736d62); }
+  #stefany-storyboard .sb-swatch:nth-child(3) { background: light-dark(#667266, #657467); }
+  #stefany-storyboard .sb-estimate {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid currentColor;
+  }
+  #stefany-storyboard .sb-total {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 2rem;
+    margin-top: 5px;
+  }
+  #stefany-storyboard .sb-scenes {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  #stefany-storyboard .sb-scenes button {
+    min-width: 34px;
+    min-height: 34px;
+    border: 1px solid light-dark(rgba(36,35,31,.3), rgba(238,233,223,.3));
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+  #stefany-storyboard .sb-scenes button[aria-pressed="true"] {
+    background: light-dark(#24231f, #eee9df);
+    color: light-dark(#f4f0e7, #24231f);
+  }
+  #stefany-storyboard .sb-nav { display: flex; gap: 8px; }
+  #stefany-storyboard .sb-nav button { min-height: 40px; }
+  #stefany-storyboard[data-mood="cinematic"] .sb-shell { background-color: light-dark(#3c1028, #2e0b20); }
+  #stefany-storyboard[data-mood="cinematic"] .sb-page { background: light-dark(#eee7dc, #332b2d); }
+  #stefany-storyboard[data-mood="warm"] .sb-shell { background-color: light-dark(#c7b69e, #302a24); }
+  @media (max-width: 640px) {
+    #stefany-storyboard .sb-shell { padding: 14px; min-height: 590px; }
+    #stefany-storyboard .sb-stage { min-height: 420px; }
+    #stefany-storyboard .sb-book { width: min(330px, 94%); height: 390px; grid-template-columns: 1fr; transform: rotateX(3deg); }
+    #stefany-storyboard .sb-right { display: none; }
+    #stefany-storyboard .sb-page { padding: 22px; }
+  }
+</style>
+
+<div id="stefany-storyboard" data-scene="0" data-mood="technical" aria-label="Storyboard del portfolio 2026 de Stefany">
+  <div class="sb-shell">
+    <div class="sb-top">
+      <div>
+        <div class="sb-kicker">Portfolio 2026 · Storyboard</div>
+        <h2 class="sb-title" id="sb-scene-title">La portada</h2>
+      </div>
+        <div class="sb-count" id="sb-count">01 / 09</div>
+    </div>
+
+    <div class="sb-stage">
+      <div class="sb-book" id="sb-book">
+        <section class="sb-page sb-left"><div class="sb-page-content" id="sb-left"></div></section>
+        <section class="sb-page sb-right"><div class="sb-page-content" id="sb-right"></div></section>
+      </div>
+    </div>
+
+    <div class="sb-bottom">
+      <div>
+        <div class="sb-motion" id="sb-motion">Scroll: el libro entra, gira y se acerca</div>
+        <div class="sb-scenes" id="sb-scenes" aria-label="Escenas del storyboard"></div>
+      </div>
+      <div class="sb-nav">
+        <button type="button" class="btn btn-ghost" id="sb-prev">Anterior</button>
+        <button type="button" class="btn" id="sb-next">Siguiente</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const root = document.getElementById('stefany-storyboard');
+  const left = document.getElementById('sb-left');
+  const right = document.getElementById('sb-right');
+  const title = document.getElementById('sb-scene-title');
+  const count = document.getElementById('sb-count');
+  const motion = document.getElementById('sb-motion');
+  const sceneNav = document.getElementById('sb-scenes');
+  const state = { scene: 0, mood: 'technical', turnIntensity: 65 };
+
+  const scenes = [
+    {
+      title: 'La portada',
+      motion: 'Scroll: el libro entra, gira y se acerca',
+      left: `<div class="sb-folio">Selected works · 2026</div><h1 class="sb-display" style="margin-top:26%">Stefany<br>Arquitectura</h1><p class="sb-small">Espacios pensados desde la forma, la materia y la manera de habitarlos.</p>`,
+      right: ''
+    },
+    {
+      title: 'Apertura',
+      motion: 'La tapa gira 160°; las hojas se abren y aparece el índice',
+      left: `<div class="sb-folio">01 · Perfil</div><h1 class="sb-display" style="margin-top:18%">Diseño que<br>se puede vivir.</h1><p class="sb-small">Una introducción breve, como la primera doble página de un portfolio impreso.</p>`,
+      right: `<div class="sb-photo sb-photo-main"></div><div class="sb-folio" style="position:absolute;bottom:0">Arquitectura · Interiorismo · Visualización</div>`
+    },
+    {
+      title: 'Índice visual',
+      motion: 'Tres proyectos se ordenan; al pasar el cursor emerge una miniatura',
+      left: `<div class="sb-folio">02 · Obras seleccionadas</div><h1 class="sb-display" style="margin-top:15%">Tres proyectos.<br>Tres escalas.</h1>`,
+      right: `<p>01&nbsp;&nbsp; Vivienda patio</p><hr><p>02&nbsp;&nbsp; Interior sereno</p><hr><p>03&nbsp;&nbsp; Espacio colectivo</p><div class="sb-plan"></div>`
+    },
+    {
+      title: 'Proyecto 01 · Plano',
+      motion: 'El plano se dibuja; cotas y etiquetas aparecen por tramos',
+      left: `<div class="sb-folio">03 · Vivienda patio</div><h1 class="sb-display" style="margin-top:14%">Una casa<br>alrededor de la luz.</h1><p class="sb-small">Ubicación · Año · Superficie · Alcance</p>`,
+      right: `<div class="sb-plan"></div><div class="sb-folio" style="position:absolute;right:0;bottom:0">Planta 01 · 1:100</div>`
+    },
+    {
+      title: 'El plano se vuelve espacio',
+      motion: 'La imagen sale de la hoja y ocupa toda la pantalla',
+      left: `<div class="sb-photo" style="inset:-12%;transform:scale(1.12)"></div>`,
+      right: `<div class="sb-photo" style="inset:-12%;transform:scale(1.12)"></div><div class="sb-folio" style="position:absolute;right:0;bottom:0;color:white">Render principal</div>`
+    },
+    {
+      title: 'Proyecto 02 · Capas',
+      motion: 'Render, croquis y materiales cambian de posición con GSAP Flip',
+      left: `<div class="sb-folio">04 · Interior sereno</div><div class="sb-photo sb-photo-main"></div><div class="sb-photo sb-photo-small"></div>`,
+      right: `<h1 class="sb-display">Materia,<br>proporción<br>y silencio.</h1><p class="sb-small">Las piezas se comportan como muestras apoyadas sobre la hoja.</p><div><i class="sb-swatch"></i><i class="sb-swatch"></i><i class="sb-swatch"></i></div>`
+    },
+    {
+      title: 'Proyecto 03 · Despiece',
+      motion: 'Las capas del plano se separan, flotan y vuelven a encastrar',
+      left: `<div class="sb-folio">05 · Espacio colectivo</div><h1 class="sb-display" style="margin-top:14%">La estructura<br>explica el lugar.</h1><p class="sb-small">Un corte, una axonometría y una fotografía se conectan como una misma pieza.</p>`,
+      right: `<div class="sb-plan" style="transform:translate(-16px,-18px);opacity:.25"></div><div class="sb-plan" style="transform:translate(0,0);opacity:.42"></div><div class="sb-plan" style="transform:translate(16px,18px);opacity:.62"></div><div class="sb-folio" style="position:absolute;right:0;bottom:0">Axonometría · Capas</div>`
+    },
+    {
+      title: 'Calculadora',
+      motion: 'Cada decisión completa el plano y actualiza el rango',
+      left: `<div class="sb-folio">06 · Estimá tu proyecto</div><h1 class="sb-display" style="margin-top:14%">¿Qué querés<br>crear?</h1><p>Tipo de proyecto&nbsp;&nbsp; Vivienda</p><hr><p>Superficie&nbsp;&nbsp; 120–180 m²</p><hr><p>Alcance&nbsp;&nbsp; Proyecto integral</p>`,
+      right: `<div class="sb-plan"></div><div class="sb-estimate"><div class="sb-folio">Rango estimado</div><div class="sb-total">USD ———</div><p class="sb-small">Una orientación inicial. La propuesta final se define luego de conocer el proyecto.</p></div>`
+    },
+    {
+      title: 'Contacto y cierre',
+      motion: 'La doble página se cierra lentamente y queda la contraportada',
+      left: `<div class="sb-folio">07 · Conversación</div><h1 class="sb-display" style="margin-top:18%">Hablemos de<br>tu próximo espacio.</h1><p class="sb-small">Formulario breve · WhatsApp · Email</p>`,
+      right: `<div class="sb-folio">Stefany · Arquitectura</div><div class="sb-plan"></div><p class="sb-small" style="position:absolute;bottom:0">Tarija · Bolivia<br>Disponible para proyectos seleccionados</p>`
+    }
+  ];
+
+  scenes.forEach((scene, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = String(index + 1).padStart(2, '0');
+    button.setAttribute('aria-label', scene.title);
+    button.addEventListener('click', () => { state.scene = index; render(); });
+    sceneNav.appendChild(button);
+  });
+
+  function render() {
+    const scene = scenes[state.scene];
+    root.dataset.scene = String(state.scene);
+    root.dataset.mood = state.mood;
+    root.style.setProperty('filter', `saturate(${0.75 + state.turnIntensity / 260})`);
+    title.textContent = scene.title;
+    count.textContent = `${String(state.scene + 1).padStart(2, '0')} / ${String(scenes.length).padStart(2, '0')}`;
+    motion.textContent = scene.motion;
+    left.innerHTML = scene.left;
+    right.innerHTML = scene.right;
+    [...sceneNav.children].forEach((button, index) => button.setAttribute('aria-pressed', String(index === state.scene)));
+    document.getElementById('sb-prev').disabled = state.scene === 0;
+    document.getElementById('sb-next').disabled = state.scene === scenes.length - 1;
+  }
+
+  document.getElementById('sb-prev').addEventListener('click', () => { state.scene = Math.max(0, state.scene - 1); render(); });
+  document.getElementById('sb-next').addEventListener('click', () => { state.scene = Math.min(scenes.length - 1, state.scene + 1); render(); });
+  render();
+
+  if (globalThis.Tweak) {
+    const tweak = new Tweak({ container: root, onChange: render });
+    tweak.addSelect(state, 'mood', { label: 'Dirección visual', options: [
+      { label: 'Editorial técnico', value: 'technical' },
+      { label: 'Cinemático', value: 'cinematic' },
+      { label: 'Cálido residencial', value: 'warm' }
+    ]});
+    tweak.addSlider(state, 'turnIntensity', { label: 'Intensidad visual', min: 20, max: 100, step: 5, unit: '%' });
+  }
+})();
+</script>

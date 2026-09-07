@@ -1,0 +1,18 @@
+.page {
+  /* Tokens locales del portfolio 2026 (docs/portfolio-2026/instructions/01-DIRECCION-VISUAL.md). */
+  --pf-papel: #f1ede4;
+  --pf-papel-elevado: #f7f3eb;
+  --pf-grafito: #211f1c;
+  --pf-grafito-suave: #69635c;
+  --pf-linea: #c9c1b5;
+  --pf-terracota: #b8583b;
+  --pf-exterior: #171716;
+
+  --pf-font-display: 'Inter Tight', 'Inter', sans-serif;
+  --pf-font-mono: 'IBM Plex Mono', 'Geist Mono', monospace;
+  --pf-font-body: 'Inter', system-ui, sans-serif;
+
+  background: var(--pf-exterior);
+  color: var(--pf-grafito);
+  min-height: 100vh;
+}

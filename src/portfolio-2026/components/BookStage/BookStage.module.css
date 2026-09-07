@@ -1,0 +1,766 @@
+.stageWrapper {
+  position: relative;
+  background: var(--pf-exterior);
+}
+
+.stage {
+  position: relative;
+  /* 100svh evita que el pin comience debajo/detrás de la barra del navegador */
+  height: 100vh;
+  height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% 10%, rgba(255, 252, 245, 0.05), transparent 60%),
+    var(--pf-exterior);
+  box-sizing: border-box;
+}
+
+/* El viewport ES la página: el papel cubre casi toda la pantalla y deja solo
+   un margen exterior mínimo. Todas las escenas comparten este mismo sistema
+   de coordenadas (mismas dimensiones e inset). */
+.paper {
+  position: absolute;
+  inset: clamp(8px, 1.4vw, 24px);
+  background-color: var(--pf-papel);
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(33, 31, 28, 0.014) 0 1px,
+    transparent 1px 4px
+  );
+  border: 1px solid var(--pf-linea);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Cantos de papel apilado para reforzar la sensación física */
+.paper::before,
+.paper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  pointer-events: none;
+  z-index: 7;
+}
+
+.paper::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(20, 18, 16, 0.22), transparent);
+}
+
+.paper::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(20, 18, 16, 0.16), transparent);
+}
+
+/* ─── Capas de página: comparten exactamente el mismo frame ──────────── */
+.layer {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  /* Perspectiva fuerte: el giro 3D queda contenido dentro del papel. */
+  perspective: 2600px;
+}
+
+.teaserLayer {
+  z-index: 1;
+  background: var(--pf-papel);
+  --teaser-ink: var(--pf-grafito);
+  --teaser-ink-soft: var(--pf-grafito-suave);
+}
+
+.spreadLayer { z-index: 2; }
+.coverLayer { z-index: 3; }
+
+/* Mitad izquierda estática de cada capa */
+.pageHalf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.pageLeft {
+  background: var(--pf-papel);
+  /* Sombra de ceja junto al pliegue */
+  box-shadow: inset -16px 0 32px -16px rgba(20, 18, 16, 0.28);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(0.9rem, 1.7vw, 1.5rem);
+  padding: clamp(2rem, 4.5vw, 4.5rem);
+}
+
+/* Hoja que gira desde el pliegue (página derecha) */
+.sheet {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 5;
+}
+
+.sheetFace {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.sheetFront {
+  background: var(--pf-papel-elevado);
+  border: 1px solid var(--pf-linea);
+  border-left: none;
+  box-shadow: inset 16px 0 32px -16px rgba(20, 18, 16, 0.22);
+}
+
+.sheetBack {
+  background: var(--pf-papel-elevado);
+  border: 1px solid var(--pf-linea);
+  border-right: none;
+  transform: rotateY(180deg);
+}
+
+/* Sombra y franja de luz que acompañan el levantamiento de la hoja */
+.sheetShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 18, 16, 0.5), transparent 45%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sheetLight {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, rgba(255, 252, 245, 0.65), transparent 32%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ─── Pliegue central persistente ────────────────────────────────────── */
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 12px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(20, 18, 16, 0.1) 42%,
+    rgba(20, 18, 16, 0.16) 50%,
+    rgba(20, 18, 16, 0.1) 58%,
+    transparent
+  );
+  z-index: 6;
+  pointer-events: none;
+}
+
+.foldShadow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 150px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(20, 18, 16, 0.55) 50%, transparent);
+  opacity: 0.16;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* ─── Portada ─────────────────────────────────────────────────────────── */
+.coverTitle {
+  font-family: var(--pf-font-display);
+  font-weight: 600;
+  font-size: clamp(2.7rem, 6.2vw, 5.6rem);
+  line-height: 0.97;
+  letter-spacing: -0.015em;
+  color: var(--pf-grafito);
+  display: flex;
+  flex-direction: column;
+}
+
+.coverDescriptor {
+  font-family: var(--pf-font-mono);
+  font-size: clamp(0.7rem, 1.05vw, 0.85rem);
+  letter-spacing: 0.03em;
+  color: var(--pf-grafito-suave);
+  max-width: 30ch;
+}
+
+.coverEdition {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--pf-font-mono);
+  font-size: clamp(0.72rem, 1.05vw, 0.88rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-terracota);
+}
+
+.coverEditionBar {
+  width: 26px;
+  height: 1px;
+  background: var(--pf-terracota);
+}
+
+.coverSheetContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.4rem, 2.6vw, 2.5rem);
+}
+
+.arcMask {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 0.88;
+  /* Arco responsivo: semicírculo superior escalado al ancho del elemento */
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
+}
+
+.arcImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.indexRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: clamp(0.9rem, 1.7vw, 1.4rem);
+  font-family: var(--pf-font-mono);
+  font-size: clamp(0.6rem, 0.9vw, 0.72rem);
+  letter-spacing: 0.08em;
+  color: var(--pf-grafito-suave);
+}
+
+.scrollHint {
+  position: absolute;
+  left: clamp(2rem, 4.5vw, 4.5rem);
+  bottom: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--pf-font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-grafito-suave);
+}
+
+.scrollArrow {
+  display: block;
+  width: 1px;
+  height: 26px;
+  background: var(--pf-grafito-suave);
+  animation: scrollHintPulse 2.1s ease-in-out infinite;
+}
+
+@keyframes scrollHintPulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.35; }
+  50% { transform: scaleY(0.55); opacity: 0.85; }
+}
+
+.stageWrapper[data-motion='reduced'] .scrollHint {
+  display: none;
+}
+
+/* ─── Presentación ────────────────────────────────────────────────────── */
+.axesLabel {
+  font-family: var(--pf-font-mono);
+  font-size: clamp(0.68rem, 0.95vw, 0.78rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pf-terracota);
+}
+
+.introTitle {
+  font-family: var(--pf-font-display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.6vw, 3.1rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--pf-grafito);
+  max-width: 20ch;
+}
+
+.titleLineMask {
+  display: block;
+  overflow: hidden;
+}
+
+.titleLine {
+  display: block;
+  will-change: transform;
+}
+
+.introText {
+  font-family: var(--pf-font-body);
+  font-size: clamp(0.88rem, 1.2vw, 1.02rem);
+  line-height: 1.7;
+  color: var(--pf-grafito-suave);
+  max-width: 44ch;
+}
+
+.axesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.4rem;
+  list-style: none;
+}
+
+.axesList li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: var(--pf-font-body);
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  color: var(--pf-grafito);
+}
+
+.axesIndex {
+  font-family: var(--pf-font-mono);
+  font-size: 0.7rem;
+  color: var(--pf-linea);
+}
+
+.imageFrame {
+  position: absolute;
+  inset: clamp(1.2rem, 2.5vw, 2.5rem);
+  overflow: hidden;
+  will-change: transform;
+}
+
+.introImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Velo de papel que se retira para dar contraste pleno al render */
+.imageVeil {
+  position: absolute;
+  inset: 0;
+  background: var(--pf-papel);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* La hoja de calco pertenece al frame de imagen de la página derecha */
+.paperLayer {
+  position: absolute;
+  inset: 0;
+  background: var(--pf-papel-elevado);
+  opacity: 0.94;
+  will-change: transform, opacity;
+}
+
+.paperTag {
+  position: absolute;
+  top: clamp(0.8rem, 1.5vw, 1.2rem);
+  left: clamp(0.8rem, 1.5vw, 1.2rem);
+  font-family: var(--pf-font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-grafito-suave);
+}
+
+.paperGridline {
+  position: absolute;
+  background: var(--pf-linea);
+  opacity: 0.55;
+}
+
+.glH { top: 28%; left: 0; right: 0; height: 1px; }
+.glV1 { top: 0; bottom: 0; left: 32%; width: 1px; }
+.glV2 { top: 0; bottom: 0; left: 68%; width: 1px; }
+
+/* ─── Teaser Spa Wellness ─────────────────────────────────────────────── */
+.teaserInner {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.teaserImageWrap {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0% 0% 0% 50%);
+  overflow: hidden;
+}
+
+.teaserImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teaserScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(23, 23, 22, 0.74) 0%,
+    rgba(23, 23, 22, 0.38) 45%,
+    transparent 75%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.teaserIndex {
+  position: absolute;
+  top: clamp(1.4rem, 2.6vw, 2.2rem);
+  left: clamp(2rem, 4.5vw, 4.5rem);
+  display: flex;
+  gap: 1.1rem;
+  font-family: var(--pf-font-mono);
+  font-size: clamp(0.7rem, 0.95vw, 0.8rem);
+  letter-spacing: 0.1em;
+  color: var(--teaser-ink-soft);
+  z-index: 3;
+}
+
+.teaserIndexActive {
+  color: var(--pf-terracota);
+}
+
+.teaserText {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: clamp(2rem, 4.5vw, 4.5rem);
+  z-index: 3;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.teaserLabel {
+  font-family: var(--pf-font-mono);
+  font-size: clamp(0.68rem, 0.95vw, 0.78rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-terracota);
+}
+
+.teaserTitle {
+  font-family: var(--pf-font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 4.4vw, 3.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--teaser-ink);
+}
+
+.teaserCategory {
+  font-family: var(--pf-font-body);
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  line-height: 1.65;
+  color: var(--teaser-ink-soft);
+  max-width: 34ch;
+}
+
+.teaserDetails {
+  position: absolute;
+  left: clamp(2rem, 4.5vw, 4.5rem);
+  bottom: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  z-index: 3;
+}
+
+.teaserDetail {
+  font-family: var(--pf-font-mono);
+  font-size: clamp(0.6rem, 0.85vw, 0.7rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teaser-ink-soft);
+  border: 1px solid var(--pf-linea);
+  padding: 0.35rem 0.7rem;
+  background: color-mix(in srgb, var(--pf-papel) 55%, transparent);
+}
+
+/* ─── Mobile: una sola página a ancho completo con pliegue horizontal ─── */
+@media (max-width: 700px) {
+  .paper {
+    inset: 8px;
+  }
+
+  .pageHalf {
+    left: 0;
+    width: 100%;
+    height: 50%;
+    bottom: auto;
+  }
+
+  .pageLeft {
+    box-shadow: inset 0 -16px 32px -16px rgba(20, 18, 16, 0.28);
+    gap: clamp(0.45rem, 1.4vw, 0.75rem);
+    padding: clamp(1.4rem, 4.5vw, 1.75rem);
+  }
+
+  .pageLeft .introText {
+    font-size: clamp(0.74rem, 3.2vw, 0.84rem);
+    line-height: 1.5;
+  }
+
+  .pageLeft .axesList {
+    gap: 0.3rem;
+    margin-top: 0.15rem;
+  }
+
+  .pageLeft .axesList li {
+    font-size: 0.78rem;
+  }
+
+  .sheet {
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    transform-origin: center top;
+  }
+
+  .sheetBack {
+    transform: rotateX(180deg);
+  }
+
+  .sheetFront {
+    border-left: 1px solid var(--pf-linea);
+    border-top: none;
+    box-shadow: inset 0 16px 32px -16px rgba(20, 18, 16, 0.22);
+  }
+
+  .sheetShade {
+    background: linear-gradient(180deg, rgba(20, 18, 16, 0.5), transparent 45%);
+  }
+
+  .sheetLight {
+    background: linear-gradient(0deg, rgba(255, 252, 245, 0.65), transparent 32%);
+  }
+
+  .fold {
+    top: 50%;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    transform: translateY(-50%);
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(20, 18, 16, 0.1) 42%,
+      rgba(20, 18, 16, 0.16) 50%,
+      rgba(20, 18, 16, 0.1) 58%,
+      transparent
+    );
+  }
+
+  .foldShadow {
+    top: 50%;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    transform: translateY(-50%);
+    background: linear-gradient(180deg, transparent, rgba(20, 18, 16, 0.55) 50%, transparent);
+  }
+
+  .coverTitle {
+    font-size: clamp(2rem, 9.5vw, 3rem);
+  }
+
+  .coverSheetContent {
+    justify-content: flex-start;
+    padding-top: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .arcMask {
+    aspect-ratio: 1.6;
+  }
+
+  .indexRow {
+    display: none;
+  }
+
+  .scrollHint {
+    left: clamp(1.5rem, 5vw, 2rem);
+    bottom: clamp(0.9rem, 2.5vw, 1.4rem);
+  }
+
+  .introTitle {
+    font-size: clamp(1.15rem, 5.4vw, 1.5rem);
+    line-height: 1.12;
+  }
+
+  .imageFrame {
+    inset: clamp(0.8rem, 3vw, 1.25rem);
+  }
+
+  .teaserText {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    padding: clamp(1.5rem, 5vw, 2rem);
+    justify-content: center;
+  }
+
+  .teaserImageWrap {
+    clip-path: inset(50% 0% 0% 0%);
+  }
+
+  .teaserScrim {
+    background: linear-gradient(
+      180deg,
+      rgba(23, 23, 22, 0.74) 0%,
+      rgba(23, 23, 22, 0.38) 45%,
+      transparent 75%
+    );
+  }
+
+  .teaserIndex {
+    top: clamp(1rem, 3vw, 1.5rem);
+    left: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .teaserDetails {
+    left: clamp(1.5rem, 5vw, 2rem);
+    bottom: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .teaserTitle {
+    font-size: clamp(1.7rem, 8vw, 2.4rem);
+  }
+}
+
+/* ─── Reduced motion: contenido completo en flujo normal, sin 3D ─────── */
+.stageWrapper[data-motion='reduced'] .stage {
+  position: static;
+  height: auto;
+  overflow: visible;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.stageWrapper[data-motion='reduced'] .paper {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 8vw, 6rem);
+  overflow: visible;
+  box-shadow: none;
+  padding-block: clamp(2rem, 6vw, 4rem);
+}
+
+.stageWrapper[data-motion='reduced'] .paper::before,
+.stageWrapper[data-motion='reduced'] .paper::after,
+.stageWrapper[data-motion='reduced'] .fold,
+.stageWrapper[data-motion='reduced'] .foldShadow,
+.stageWrapper[data-motion='reduced'] .sheetShade,
+.stageWrapper[data-motion='reduced'] .sheetLight,
+.stageWrapper[data-motion='reduced'] .sheetBack,
+.stageWrapper[data-motion='reduced'] .imageVeil,
+.stageWrapper[data-motion='reduced'] .paperLayer {
+  display: none;
+}
+
+.stageWrapper[data-motion='reduced'] .layer,
+.stageWrapper[data-motion='reduced'] .teaserInner {
+  position: static;
+  perspective: none;
+  transform: none !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.stageWrapper[data-motion='reduced'] .pageHalf {
+  position: static;
+  width: 100%;
+  height: auto;
+}
+
+.stageWrapper[data-motion='reduced'] .sheet {
+  position: static;
+  width: 100%;
+  height: auto;
+  transform: none !important;
+}
+
+.stageWrapper[data-motion='reduced'] .sheetFace {
+  position: static;
+  overflow: visible;
+}
+
+.stageWrapper[data-motion='reduced'] .coverSheetContent {
+  position: relative;
+  inset: auto;
+}
+
+.stageWrapper[data-motion='reduced'] .imageFrame {
+  position: relative;
+  inset: auto;
+  aspect-ratio: 4 / 3;
+}
+
+.stageWrapper[data-motion='reduced'] .arcMask {
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.stageWrapper[data-motion='reduced'] .teaserImageWrap {
+  position: relative;
+  clip-path: none !important;
+  aspect-ratio: 16 / 10;
+  order: -1;
+}
+
+.stageWrapper[data-motion='reduced'] .teaserText,
+.stageWrapper[data-motion='reduced'] .teaserIndex,
+.stageWrapper[data-motion='reduced'] .teaserDetails {
+  position: static;
+  width: 100%;
+}
+
+.stageWrapper[data-motion='reduced'] .teaserText {
+  padding-block: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.stageWrapper[data-motion='reduced'] .teaserIndex {
+  padding: clamp(1.5rem, 5vw, 2rem) clamp(2rem, 4.5vw, 4.5rem) 0;
+}
+
+.stageWrapper[data-motion='reduced'] .teaserDetails {
+  padding: 0 clamp(2rem, 4.5vw, 4.5rem) clamp(1.5rem, 5vw, 2.5rem);
+}

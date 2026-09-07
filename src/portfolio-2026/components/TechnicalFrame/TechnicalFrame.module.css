@@ -1,0 +1,60 @@
+.frame {
+  position: absolute;
+  inset: clamp(0.9rem, 2.2vw, 1.6rem);
+  pointer-events: none;
+  font-family: var(--pf-font-mono);
+  font-size: clamp(0.55rem, 0.85vw, 0.68rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pf-grafito-suave);
+  z-index: 4;
+}
+
+.corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--pf-linea);
+}
+
+.cornerTl { top: -4px; left: -4px; border-right: none; border-bottom: none; }
+.cornerTr { top: -4px; right: -4px; border-left: none; border-bottom: none; }
+.cornerBl { bottom: -4px; left: -4px; border-right: none; border-top: none; }
+.cornerBr { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+
+.labelTl {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.labelTc {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.labelTr {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.indexRow {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  gap: clamp(0.75rem, 1.6vw, 1.4rem);
+}
+
+.indexActive {
+  color: var(--pf-terracota);
+}
+
+@media (max-width: 700px) {
+  .labelTc { display: none; }
+}
