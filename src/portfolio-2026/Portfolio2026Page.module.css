@@ -7,12 +7,15 @@
   --pf-linea: #c9c1b5;
   --pf-terracota: #b8583b;
   --pf-exterior: #171716;
+  --pf-surface: #d9d7d1;
 
   --pf-font-display: 'Inter Tight', 'Inter', sans-serif;
   --pf-font-mono: 'IBM Plex Mono', 'Geist Mono', monospace;
   --pf-font-body: 'Inter', system-ui, sans-serif;
 
-  background: var(--pf-exterior);
+  width: 100%;
+  min-height: 100svh;
+  overflow: clip;
+  background: var(--pf-surface);
   color: var(--pf-grafito);
-  min-height: 100vh;
 }

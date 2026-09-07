@@ -6,8 +6,8 @@ export const coverContent = {
   pageRef: 'REV. 2026.01',
   pageCount: 'P. 01',
   name: ['Stefany', 'Aguiar'],
-  descriptor: 'Arquitectura · Interiorismo · Visualización 2D y 3D',
-  edition: 'Portfolio 2026',
+  descriptor: 'Arquitectura · Interiorismo · Visualización',
+  edition: 'Portfolio / 2026',
   scrollHint: 'Scroll para abrir',
   image: {
     src: '/images/hero.png',
